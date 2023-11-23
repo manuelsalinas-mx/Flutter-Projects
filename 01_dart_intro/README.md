@@ -3,6 +3,7 @@
 
 Esta es una sección introductoria **para personas que nunca han tocado Dart** en su vida, o quieren tener la base necesaria para  **Flutter**.
 
+![Dart-logo-wordmark svg](https://github.com/manuelsalinas-mx/Flutter-Projects/assets/110424672/954a7a8e-9daa-4d0b-91d2-1d9faf53c818)
 
 
 ### Temas puntuales:
