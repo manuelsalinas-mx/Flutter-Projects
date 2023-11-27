@@ -51,7 +51,9 @@ class _CounterFunctionsScreenState extends State<CounterFunctionsScreen> {
                 });
               },
             ),
+
             const SizedBox(height: 20),
+
             CustomButton(
               icon: Icons.plus_one,
               onPressed: () {
@@ -60,7 +62,9 @@ class _CounterFunctionsScreenState extends State<CounterFunctionsScreen> {
                 });
               },
             ),
+
             const SizedBox(height: 20),
+            
             CustomButton(
               icon: Icons.exposure_minus_1_outlined,
               onPressed: () {
