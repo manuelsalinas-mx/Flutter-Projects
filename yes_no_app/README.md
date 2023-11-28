@@ -1,16 +1,35 @@
-# yes_no_app
 
-A new Flutter project.
+# YesNo App
 
-## Getting Started
+Aplicación **YesNo (Chat)**, la cual eventualmente responderá nuestras preguntas (siempre y cuando sean de si o no).
 
-This project is a starting point for a Flutter application.
+En esta app veremos:
 
-A few resources to get you started if this is your first Flutter project:
+- TextEditingControllers
+- Focus Nodes
+- ThemeData
+- Gestores de estado
+- Mappers
+- Peticiones HTTP
+- Dio
+- Paquetes
+- Funciones que retornan valores como callbacks
+- Scroll
+- Provider
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+**Widgets** como:
+- Containers
+- SizeBox
+- ListViews
+- CustomWidgets
+- Expanded
+- Padding
+- Image (desde internet)
+- ClipRRect (bordes redondeados)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Entre otros
+
+---
+Al finalizar tendremos una buena base de como alojar el estado fuera de los widgets y que los widgets se actualicen y tomen la información que necesitan del gestor de estado.
+
+
