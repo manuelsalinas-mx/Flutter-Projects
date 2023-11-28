@@ -17,7 +17,7 @@ class ChatScreen extends StatelessWidget {
                 NetworkImage('https://pbs.twimg.com/media/Ec9kAEUXgAAcYwA.jpg'),
           ),
         ),
-        title: const Text('❤️ My Love ❤️'),
+        title: const Text('❤️ Viry Ferguson ❤️'),
         centerTitle: false,
       ),
       body: _ChatView(),
