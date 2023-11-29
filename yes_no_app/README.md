@@ -32,4 +32,4 @@ Entre otros
 ---
 Al finalizar tendremos una buena base de como alojar el estado fuera de los widgets y que los widgets se actualicen y tomen la información que necesitan del gestor de estado.
 
-
+## Screenshots
