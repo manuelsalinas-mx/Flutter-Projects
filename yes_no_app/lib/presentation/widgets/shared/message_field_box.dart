@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
 class MessageFieldBox extends StatelessWidget {
-  const MessageFieldBox({super.key});
+  final ValueChanged<String> onValue;
+  const MessageFieldBox({super.key, required this.onValue});
 
   @override
   Widget build(BuildContext context) {
@@ -25,8 +26,9 @@ class MessageFieldBox extends StatelessWidget {
         onPressed: () {
           // Mantiene el teclado abierto
           final text = textController.value.text;
-          print('Valor de la caja de texto: $text');
+          // print('Valor de la caja de texto: $text');
           textController.clear();
+          onValue(text);
         },
       ),
     );
@@ -40,11 +42,12 @@ class MessageFieldBox extends StatelessWidget {
       decoration: inputDecoration,
       onFieldSubmitted: (text) {
         // Cierra automaticamente el teclado
-        print('Submitted vaue: $text');
+        // print('Submitted vaue: $text');
         textController.clear();
 
         // Mantener el foco
         focusNode.requestFocus();
+         onValue(text);
       },
       // onChanged: (val) {
       //   print('Changed: $val');
