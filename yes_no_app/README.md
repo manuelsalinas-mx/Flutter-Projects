@@ -33,3 +33,5 @@ Entre otros
 Al finalizar tendremos una buena base de como alojar el estado fuera de los widgets y que los widgets se actualicen y tomen la información que necesitan del gestor de estado.
 
 ## Screenshots
+![Simulator Screen Recording - iPhone 15 - 2023-11-29 at 17 47 38](https://github.com/manuelsalinas-mx/Flutter-Projects/assets/110424672/1fb71113-2ec8-47a1-ae67-20991d1463d3)
+
