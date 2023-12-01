@@ -20,10 +20,9 @@ Se verán:
 
 
 
-
-
-
 ## Screenshots
 
-![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
+![S1023,imulator Screen Recording - iPhone 15 - 2023-12-01 at 12 38 42](https://github.com/manuelsalinas-mx/Flutter-Projects/assets/110424672/1ff17987-d60e-4743-811c-05b3493f6791)
+
+
 
