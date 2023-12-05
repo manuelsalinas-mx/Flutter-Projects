@@ -5,7 +5,9 @@ import 'package:tik_tok/domain/repositories/video_post_repository.dart';
 class VideoPostsRepositoryImpl implements VideoPostRepository {
   final VideoPostDatasoruce videosDatasource;
 
-  VideoPostsRepositoryImpl({required this.videosDatasource});
+  VideoPostsRepositoryImpl({
+    required this.videosDatasource
+  });
 
   @override
   Future<List<VideoPost>> getFavoriteVideosByUser(String userID) {
