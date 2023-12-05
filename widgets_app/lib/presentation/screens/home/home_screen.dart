@@ -44,8 +44,8 @@ class _CustomListTile extends StatelessWidget {
     final colors = Theme.of(context).colorScheme;
 
     return ListTile(
-      leading: Icon(item.icon, color: colors.primary),
-      trailing: Icon(Icons.arrow_forward_ios_sharp, color: colors.primary),
+      leading: Icon(item.icon, color: colors.primary, size: 45),
+      trailing: Icon(Icons.arrow_forward_ios_sharp, color: colors.primary, size: 15),
       title: Text(item.title),
       subtitle: Text(item.subtitle),
       onTap: () {
@@ -61,8 +61,8 @@ class _CustomListTile extends StatelessWidget {
         //Navigator.pushNamed(context, item.link);
 
         // Navegar a otra pantalla - GoRouter (el favorito)
-        //context.push(item.link);
-        context.pushNamed(CardsScreen.name);
+        context.push(item.link);
+        //context.pushNamed(CardsScreen.name);
       },
     );
   }
