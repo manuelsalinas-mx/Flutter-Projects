@@ -9,7 +9,7 @@ class ButtonsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Buttons Screen')),
+      appBar: AppBar(title: const Text('Button Styles')),
       body: const _ButtonsView(),
       floatingActionButton: FloatingActionButton(
           child: const Icon(Icons.arrow_back),
