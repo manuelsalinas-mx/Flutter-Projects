@@ -11,7 +11,7 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Flutter + Material3'),
+        title: const Text('Flutter Widgets +Material3'),
       ),
       body: const _HomeView(),
     );
