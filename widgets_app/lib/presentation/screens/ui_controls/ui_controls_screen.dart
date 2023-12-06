@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-class UIControlsScreen extends StatelessWidget {
+class UiControlsScreen extends StatelessWidget {
   static const name = 'ui_controls_screen';
-  const UIControlsScreen({super.key});
+  const UiControlsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return const Placeholder();
   }
 }
