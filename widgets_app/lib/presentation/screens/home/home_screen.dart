@@ -62,7 +62,7 @@ class _CustomListTile extends StatelessWidget {
 
         // Navegar a otra pantalla - GoRouter (el favorito)
         context.push(item.link);
-        //context.pushNamed(CardsScreen.name);
+        // context.pushNamed(CardsScreen.name);
       },
     );
   }
