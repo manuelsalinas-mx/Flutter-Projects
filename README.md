@@ -7,8 +7,8 @@
 2. [Contador](https://github.com/manuelsalinas-mx/Flutter-Projects/tree/main/hello_world_app)
 3. [YesNo Chat App](https://github.com/manuelsalinas-mx/Flutter-Projects/tree/main/yes_no_app)
 4. [TokTik App](https://github.com/manuelsalinas-mx/Flutter-Projects/tree/main/tik_tok)
+5. [Widgets app](https://github.com/manuelsalinas-mx/Flutter-Projects/tree/main/widgets_app)
 <!-- 
-5. [Widgets app]()
 6. [Riverpod - Menu y Temas]()
 7. [Cinemapedia App]()
 8. [Forms App - FlutterBloc y Cubits]()
