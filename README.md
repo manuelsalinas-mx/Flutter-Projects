@@ -8,7 +8,7 @@
 3. [YesNo Chat App](https://github.com/manuelsalinas-mx/Flutter-Projects/tree/main/yes_no_app)
 4. [TokTik App](https://github.com/manuelsalinas-mx/Flutter-Projects/tree/main/tik_tok)
 5. [Widgets App](https://github.com/manuelsalinas-mx/Flutter-Projects/tree/main/widgets_app)
-6. [widgets Pro App](https://github.com/manuelsalinas-mx/Flutter-Projects/tree/main/widgets_app_pro)
+6. [Widgets Pro App](https://github.com/manuelsalinas-mx/Flutter-Projects/tree/main/widgets_app_pro)
 <!-- 
 6. [Riverpod - Menu y Temas]()
 7. [Cinemapedia App]()
