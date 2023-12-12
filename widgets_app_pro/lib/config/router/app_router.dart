@@ -8,7 +8,7 @@ final appRouter = GoRouter(
     GoRoute(
       path: '/',
       name: HomeScreen.name,
-      builder: (context, state) => const HomeScreen(),
+      builder: (context, state) => HomeScreen(),
     ),
 
      GoRoute(
@@ -57,6 +57,18 @@ final appRouter = GoRouter(
       path: '/controls',
       name: UiControlsScreen.name,
       builder: (context, state) => const UiControlsScreen(),
+    ),
+
+     GoRoute(
+      path: '/counter',
+      name: CounterScreen.name,
+      builder: (context, state) => const CounterScreen(),
+    ),
+
+      GoRoute(
+      path: '/theme-changer',
+      name: ThemeScreen.name,
+      builder: (context, state) => const ThemeScreen(),
     ),
   ],
 );

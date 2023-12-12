@@ -14,19 +14,19 @@ const List<Color> colorList = [
 
 class AppTheme {
   final int selectedColor;
+  final bool isDarkMode;
 
   AppTheme({
-     required this.selectedColor
-     }) : assert(selectedColor >= 0 && selectedColor <= colorList.length - 1,
+    this.selectedColor = 0,
+    this.isDarkMode = false
+    }) : assert(selectedColor >= 0 && selectedColor <= colorList.length - 1,
             'Colors must be between 0 and ${colorList.length - 1}');
 
   ThemeData getTheme() {
     return ThemeData(
         useMaterial3: true,
-         colorSchemeSeed: colorList[selectedColor],
-         appBarTheme: const AppBarTheme(
-          centerTitle: false
-         )
-    );
+        brightness: isDarkMode ? Brightness.dark : Brightness.light,
+        colorSchemeSeed: colorList[selectedColor],
+        appBarTheme: const AppBarTheme(centerTitle: false));
   }
 }

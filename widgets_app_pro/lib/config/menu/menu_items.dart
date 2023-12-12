@@ -54,4 +54,14 @@ const appMenuItems = <MenuItem>[
       subtitle: 'Listas infinitas y pull to refresh',
       link: '/infinite',
       icon: Icons.recycling_rounded),
+  MenuItem(
+      title: 'Counter',
+      subtitle: 'Counter usando "riverpod"',
+      link: '/counter',
+      icon: Icons.calculate),
+   MenuItem(
+      title: 'Theme Changer',
+      subtitle: 'Cambiar tema de la aplicación en tiempo real',
+      link: '/theme-changer',
+      icon: Icons.color_lens_sharp),
 ];

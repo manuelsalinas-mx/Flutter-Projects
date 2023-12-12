@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 
 class InfiniteScrollScreen extends StatefulWidget {
   static const name = 'infinite_scroll_screen';
