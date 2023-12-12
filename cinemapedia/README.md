@@ -21,6 +21,10 @@ Puntualmente:
 
 Todo el objetivo es poder establecer los cimientos ordenados de nuestra arquitectura para reforzarlos y verlos en la práctica.
 
+## DEV
+1. Copiar el .env.template y renombrarlo a .env
+2. Cambiar las variables de entorno (TheMovieDB)
+
 ## Screenshots
 
 ![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
