@@ -21,8 +21,19 @@ Puntualmente:
 
 Todo el objetivo es poder establecer los cimientos ordenados de nuestra arquitectura para reforzarlos y verlos en la práctica.
 
+### Home Screen
+
+El home screen va a realizar 4 consultas a **TheMovieDB** para obtener:
+1. Películas populares
+2. Películas en cines
+3. Películas mejor calificadas
+4. Películas que próximamente estarán en cines
+   
+
+Para lograr esto se aprendio un poco sobre **scroll horizontal infinito**, **slivers** y demás.
+
 ## DEV
-1. Copiar el .env.template y renombrarlo a .env
+1. Copiar el **.env.template** y renombrarlo a **.env**
 2. Cambiar las variables de entorno (TheMovieDB)
 
 ## Screenshots
