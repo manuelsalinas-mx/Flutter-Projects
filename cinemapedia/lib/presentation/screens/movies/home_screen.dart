@@ -36,14 +36,12 @@ class _HomneViewState extends ConsumerState<_HomneView> {
 
   @override
   Widget build(BuildContext context) {
-    final nowPlayingMovies = ref.watch(nowPlayingMoviesProvider);
+    // final nowPlayingMovies = ref.watch(nowPlayingMoviesProvider);
+    final nowPlayingMovies = ref.watch(moviesSlideshowProvider);
 
-    return Column(
-      children: [
-        CustomAppBar(),
-        MovieSlideshow(movies: nowPlayingMovies),
-
-      ]
-      );
+    return Column(children: [
+      const CustomAppBar(),
+      MovieSlideshow(movies: nowPlayingMovies),
+    ]);
   }
 }

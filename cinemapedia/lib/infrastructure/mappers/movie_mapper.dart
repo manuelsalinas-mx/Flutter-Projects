@@ -7,7 +7,7 @@ class MovieMapper {
       adult: moviedb.adult,
       backdropPath: (moviedb.backdropPath != '') 
       ? 'https://image.tmdb.org/t/p/w500${moviedb.backdropPath}' 
-      : 'https://img.freepik.com/premium-vector/default-image-icon-vector-missing-picture-page-website-design-mobile-app-no-photo-available_87543-11093.jpg',
+      : 'empty',
       genreIds: moviedb.genreIds.map((e) => e.toString()).toList(),
       id: moviedb.id,
       originalLanguage: moviedb.originalLanguage,
