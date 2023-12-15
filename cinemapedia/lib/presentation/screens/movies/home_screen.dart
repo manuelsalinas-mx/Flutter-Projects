@@ -11,6 +11,7 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Scaffold(
       body: _HomneView(),
+      bottomNavigationBar: CustomBottomNavigation(),
     );
   }
 }
@@ -36,12 +37,63 @@ class _HomneViewState extends ConsumerState<_HomneView> {
 
   @override
   Widget build(BuildContext context) {
-    // final nowPlayingMovies = ref.watch(nowPlayingMoviesProvider);
-    final nowPlayingMovies = ref.watch(moviesSlideshowProvider);
+    final nowPlayingMovies = ref.watch(nowPlayingMoviesProvider);
+    final slideShowMovies = ref.watch(moviesSlideshowProvider);
 
-    return Column(children: [
-      const CustomAppBar(),
-      MovieSlideshow(movies: nowPlayingMovies),
-    ]);
+    return CustomScrollView(
+      slivers: [
+        const SliverAppBar(
+          floating: true,
+          flexibleSpace: FlexibleSpaceBar(
+            title: CustomAppBar(),
+            titlePadding: EdgeInsets.zero,
+            ),
+        ),
+
+        SliverList(
+            delegate: SliverChildBuilderDelegate((context, index) {
+          return Column(children: [
+            // const CustomAppBar(),
+            MovieSlideshow(movies: slideShowMovies),
+            MoviesHorizontalListview(
+              movies: nowPlayingMovies,
+              title: 'En Cines',
+              subtitle: 'Hoy',
+              loadNextPage: () {
+                // print('Llamado del padre');
+                ref.read(nowPlayingMoviesProvider.notifier).loadNextPage();
+              },
+            ),
+            MoviesHorizontalListview(
+              movies: nowPlayingMovies,
+              title: 'Proximamente',
+              subtitle: 'Este mes',
+              loadNextPage: () {
+                // print('Llamado del padre');
+                ref.read(nowPlayingMoviesProvider.notifier).loadNextPage();
+              },
+            ),
+            MoviesHorizontalListview(
+              movies: nowPlayingMovies,
+              title: 'Populares',
+              loadNextPage: () {
+                // print('Llamado del padre');
+                ref.read(nowPlayingMoviesProvider.notifier).loadNextPage();
+              },
+            ),
+            MoviesHorizontalListview(
+              movies: nowPlayingMovies,
+              title: 'Las mas votadas',
+              subtitle: 'del año',
+              loadNextPage: () {
+                // print('Llamado del padre');
+                ref.read(nowPlayingMoviesProvider.notifier).loadNextPage();
+              },
+            ),
+            const SizedBox(height: 10),
+          ]);
+        }, childCount: 1))
+      ],
+    );
   }
 }
