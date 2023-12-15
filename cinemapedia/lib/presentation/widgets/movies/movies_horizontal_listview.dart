@@ -55,6 +55,7 @@ class _MoviesHorizontalListviewState extends State<MoviesHorizontalListview> {
         children: [
           if (widget.title != null || widget.subtitle != null)
             _TitlesView(title: widget.title, subtitle: widget.subtitle),
+            const SizedBox(height: 8),
           Expanded(
               child: ListView.builder(
                   controller: scrollController,
@@ -62,7 +63,7 @@ class _MoviesHorizontalListviewState extends State<MoviesHorizontalListview> {
                   physics: const BouncingScrollPhysics(),
                   itemCount: widget.movies.length,
                   itemBuilder: (context, index) =>
-                      _PosterView(movie: widget.movies[index]))),
+                      FadeInRight(child: _PosterView(movie: widget.movies[index])))),
         ],
       ),
     );
