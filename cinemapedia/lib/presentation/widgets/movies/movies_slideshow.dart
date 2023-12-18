@@ -3,6 +3,7 @@ import 'package:animate_do/animate_do.dart';
 import 'package:card_swiper/card_swiper.dart';
 import 'package:cinemapedia/domain/entities/movie.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class MovieSlideshow extends StatelessWidget {
   final List<Movie> movies;
@@ -30,7 +31,7 @@ class MovieSlideshow extends StatelessWidget {
             color: colors.secondary
           ),
           ),
-        onTap: (index) {},
+        onTap: (index) => context.push('/movie/${movies[index].id}'),
       ),
     );
   }

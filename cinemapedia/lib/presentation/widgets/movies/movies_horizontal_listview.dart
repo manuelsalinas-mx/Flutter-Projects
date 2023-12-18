@@ -3,6 +3,7 @@ import 'package:cinemapedia/config/helpers/human_formats.dart';
 import 'package:cinemapedia/config/theme/app_theme.dart';
 import 'package:cinemapedia/domain/entities/movie.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class MoviesHorizontalListview extends StatefulWidget {
   final List<Movie> movies;
@@ -55,7 +56,6 @@ class _MoviesHorizontalListviewState extends State<MoviesHorizontalListview> {
         children: [
           if (widget.title != null || widget.subtitle != null)
             _TitlesView(title: widget.title, subtitle: widget.subtitle),
-            const SizedBox(height: 8),
           Expanded(
               child: ListView.builder(
                   controller: scrollController,
@@ -102,7 +102,10 @@ class _PosterView extends StatelessWidget {
                     );
                   }
 
-                  return FadeIn(child: child);
+                  return GestureDetector(
+                    onTap: () => context.push('/movie/${movie.id}'),
+                    child: FadeIn(child: child)
+                    );
                 },
               ),
             ),
@@ -126,7 +129,7 @@ class _PosterView extends StatelessWidget {
                 const SizedBox(width: 3),
                 Text(movie.voteAverage.toStringAsPrecision(2),
                     style: titleStyles.bodyMedium),
-                Spacer(),
+                const Spacer(),
                 Text(HumanFormats.humanReadableNumber(movie.popularity),
                     style: titleStyles.bodySmall)
               ],
