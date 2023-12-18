@@ -18,8 +18,18 @@ Puntualmente:
 - - _StateNotifierProvider_
 - - _Notifiers_
 - **Mappers**
+- **Búsquedas y trabajar con el SearchDelegate.**
+- - _SearchDelegate_
+- - _Datasources_
+- - _Repositorios_
+- - _Búsquedas contra TheMovieDB_
+- - _Debouncer_
+- - _Streams_
+- - _Builders_
+- - _DRY_
+- - _Providers_
 
-Todo el objetivo es poder establecer los cimientos ordenados de nuestra arquitectura para reforzarlos y verlos en la práctica.
+Todo el objetivo es poder establecer los cimientos ordenados de nuestra arquitectura para reforzarlos y verlos en la práctica.  Construcción de un motor de búsqueda completo y robusto para que nuestros usuarios puedan buscar sus películas ahí y preservar búsquedas anteriores 
 
 ### Home Screen
 
