@@ -26,8 +26,14 @@ Puntualmente:
 - - _Debouncer_
 - - _Streams_
 - - _Builders_
-- - _DRY_
+- - _DRY (Don't repeat your code)_
 - - _Providers_
+- **Navegación entre tabs**
+- **Preservar estado**
+- **Go_Router**
+- - _Redirect_
+- - _ShellRoute_
+- - _SubShellRoutes_
 
 Todo el objetivo es poder establecer los cimientos ordenados de nuestra arquitectura para reforzarlos y verlos en la práctica.  Construcción de un motor de búsqueda completo y robusto para que nuestros usuarios puedan buscar sus películas ahí y preservar búsquedas anteriores 
 
