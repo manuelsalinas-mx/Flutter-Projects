@@ -14,7 +14,7 @@ class CustomBottomNavigation extends StatelessWidget {
         BottomNavigationBarItem(icon: Icon(Icons.favorite), label: 'Favorites'),
       ],
       onTap: (index) {
-        
+        print(index.toString());
       },
     );
   }
