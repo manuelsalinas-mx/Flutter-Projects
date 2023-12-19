@@ -1,6 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../providers.dart';
 
+// Cargar varios request a la vez
 final initialLoadingProvider = Provider<bool>((ref) {
   final step1 = ref.watch(nowPlayingMoviesProvider).isEmpty;
   final step2 = ref.watch(popularMoviesProvider).isEmpty;

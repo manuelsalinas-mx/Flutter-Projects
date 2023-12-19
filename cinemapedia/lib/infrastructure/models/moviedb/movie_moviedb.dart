@@ -10,7 +10,7 @@ class MovieFromMovieDB {
   final String overview;
   final double popularity;
   final String posterPath;
-  final DateTime releaseDate;
+  final DateTime? releaseDate;
   final String title;
   final bool video;
   final double voteAverage;
@@ -43,8 +43,10 @@ class MovieFromMovieDB {
         originalTitle: json["original_title"],
         overview: json["overview"] ?? '',
         popularity: json["popularity"]?.toDouble(),
-        posterPath: json["poster_path"] ?? '',
-        releaseDate: DateTime.parse(json["release_date"]),
+        posterPath: json["poster_path"] ?? 'https://camo.githubusercontent.com/aeb22ff7f1dd473737cdbcfdfbf3103c78b2c03d613668cecf3679002f037a34/68747470733a2f2f692e696d6775722e636f6d2f5a324d594e626a2e706e672f6c617267655f6d6f7669655f706f737465722e706e67',
+        releaseDate: (json["release_date"] != null && json["release_date"].toString().isNotEmpty) 
+        ? DateTime.parse(json["release_date"])
+        : null,
         title: json["title"],
         video: json["video"],
         voteAverage: json["vote_average"]?.toDouble(),
@@ -61,8 +63,9 @@ class MovieFromMovieDB {
         "overview": overview,
         "popularity": popularity,
         "poster_path": posterPath,
-        "release_date":
-            "${releaseDate.year.toString().padLeft(4, '0')}-${releaseDate.month.toString().padLeft(2, '0')}-${releaseDate.day.toString().padLeft(2, '0')}",
+        "release_date": (releaseDate != null)
+        ? "${releaseDate!.year.toString().padLeft(4, '0')}-${releaseDate!.month.toString().padLeft(2, '0')}-${releaseDate!.day.toString().padLeft(2, '0')}"
+        : null,
         "title": title,
         "video": video,
         "vote_average": voteAverage,
