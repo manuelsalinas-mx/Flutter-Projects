@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:ffi';
 
 import 'package:animate_do/animate_do.dart';
 import 'package:cinemapedia/config/helpers/human_formats.dart';
@@ -15,17 +16,21 @@ class SearchMoviesDelegate extends SearchDelegate<Movie?> {
   StreamController<List<Movie>> debouncedMovies = StreamController.broadcast();
   Timer? _debouncedTimer;
 
-  SearchMoviesDelegate({
-        required this.searchMovies,
-         required this.initialMovies
-  });
+  // Loading indicator
+  StreamController<bool> isLoadingStream = StreamController.broadcast();
+
+  SearchMoviesDelegate(
+      {required this.searchMovies, required this.initialMovies});
 
   /* * * * * * * * * * * *  Stream Functions * * * * * * * * * * * * * * * * * */
   void clearStreams() {
+    isLoadingStream.close();
     debouncedMovies.close();
   }
 
   void _onQueryChanged(String query) {
+    isLoadingStream.add(true);
+    
     // Cancelar si esta activo?
     if (_debouncedTimer?.isActive ?? false) _debouncedTimer?.cancel();
 
@@ -35,12 +40,13 @@ class SearchMoviesDelegate extends SearchDelegate<Movie?> {
       final movies = await searchMovies(query);
       initialMovies = movies;
       debouncedMovies.add(movies);
+      isLoadingStream.add(false);
     });
   }
 
   /* * * * * * *  * * Suggestions & Results Widget * * * * * * * * * */
   /// This function avoids spaguetti / duplicated code
-  Widget buildResultsAndSuggestions() {
+  Widget _buildResultsAndSuggestions() {
     return StreamBuilder(
         initialData: initialMovies,
         stream: debouncedMovies.stream,
@@ -65,11 +71,30 @@ class SearchMoviesDelegate extends SearchDelegate<Movie?> {
   @override
   List<Widget>? buildActions(BuildContext context) {
     return [
-      // if (query.isNotEmpty)
-      FadeInRight(
-          animate: query.isNotEmpty,
-          child: IconButton(
-              onPressed: () => query = '', icon: const Icon(Icons.clear))),
+      StreamBuilder(
+        initialData: false,
+          stream: isLoadingStream.stream,
+          builder: (context, snapshot) {
+            final isSearching = snapshot.data ?? false;
+          
+          // Loading indicator
+          if (isSearching) {         
+              return SpinPerfect(
+                  duration: const Duration(seconds: 20),
+                  spins: 10,
+                  infinite: true,
+                  child: IconButton(
+                      onPressed: () => query = '',
+                      icon: const Icon(Icons.refresh)));
+            }
+
+          // Clear indicator
+            return FadeIn(
+                animate: query.isNotEmpty,
+                child: IconButton(
+                    onPressed: () => query = '',
+                    icon: const Icon(Icons.clear)));
+          }),
     ];
   }
 
@@ -85,13 +110,13 @@ class SearchMoviesDelegate extends SearchDelegate<Movie?> {
 
   @override
   Widget buildResults(BuildContext context) {
-    return buildResultsAndSuggestions();
+    return _buildResultsAndSuggestions();
   }
 
   @override
   Widget buildSuggestions(BuildContext context) {
     _onQueryChanged(query);
-    return buildResultsAndSuggestions();
+    return _buildResultsAndSuggestions();
   }
 }
 
