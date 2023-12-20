@@ -57,6 +57,11 @@ Para lograr esto se aprendio un poco sobre **scroll horizontal infinito**, **sli
 ## DEV
 1. Copiar el **.env.template** y renombrarlo a **.env**
 2. Cambiar las variables de entorno (TheMovieDB)
+3. Cambios en la entidad **movie (_con isar_)**, hay que ejecutar el siguiente comando
+```
+flutter pub run build_runner build
+```
+
 
 ## Screenshots
 
