@@ -31,7 +31,7 @@ class MovieSlideshow extends StatelessWidget {
             color: colors.secondary
           ),
           ),
-        onTap: (index) => context.push('/movie/${movies[index].id}'),
+        onTap: (index) => context.push('/home/0/movie/${movies[index].id}'),
       ),
     );
   }
