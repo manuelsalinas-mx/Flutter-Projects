@@ -6,34 +6,35 @@ La idea es que comencemos a crear código **reutilizable**, **estructurado** y *
 Puntualmente:
 
 - **Datasources**
-- - _Implementaciones_
-- - _Abastracciones_
+  - _Implementaciones_
+  - _Abastracciones_
 - **Repositorios**
-- - _Implementaciones_
-- - _Abstracciones_
+  - _Implementaciones_
+  - _Abstracciones_
 - **Modelos**
 - **Entidades**
 - **Riverpod**
-- - _Provider_
-- - _StateNotifierProvider_
-- - _Notifiers_
+  - _Provider_
+  - _StateNotifierProvider_
+  - _Notifiers_
 - **Mappers**
 - **Búsquedas y trabajar con el SearchDelegate.**
-- - _SearchDelegate_
-- - _Datasources_
-- - _Repositorios_
-- - _Búsquedas contra TheMovieDB_
-- - _Debouncer_
-- - _Streams_
-- - _Builders_
-- - _DRY (Don't repeat your code)_
-- - _Providers_
+  - _SearchDelegate_
+  - _Datasources_
+  - _Repositorios_
+  - _Búsquedas contra TheMovieDB_
+  - _Debouncer_
+  - _Streams_
+  - _Builders_
+  - _DRY (Don't repeat your code)_
+  - _Providers_
 - **Navegación entre tabs**
 - **Preservar estado**
 - **Go_Router**
-- - _Redirect_
-- - _ShellRoute_
-- - _SubShellRoutes_
+  - _Redirect_
+  -  _ShellRoute_
+  - _SubShellRoutes_
+
 
 Todo el objetivo es poder establecer los cimientos ordenados de nuestra arquitectura para reforzarlos y verlos en la práctica.  Construcción de un motor de búsqueda completo y robusto para que nuestros usuarios puedan buscar sus películas ahí y preservar búsquedas anteriores 
 
