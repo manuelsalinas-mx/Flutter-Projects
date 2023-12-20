@@ -34,6 +34,11 @@ Puntualmente:
   - _Redirect_
   -  _ShellRoute_
   - _SubShellRoutes_
+- **Base de Datos**
+  - Realizar queries
+  - Almacenar en base de datos
+  - Leer, insertar y borrar
+  - FutureProvider de Riverpod
 
 
 Todo el objetivo es poder establecer los cimientos ordenados de nuestra arquitectura para reforzarlos y verlos en la práctica.  Construcción de un motor de búsqueda completo y robusto para que nuestros usuarios puedan buscar sus películas ahí y preservar búsquedas anteriores 
