@@ -178,7 +178,13 @@ class _ActorView extends StatelessWidget {
   }
 }
 
-class _CustomSliverAppBar extends StatelessWidget {
+final isFavoriteProvider =
+    FutureProvider.family.autoDispose((ref, int movieId) {
+  final localStorageRepository = ref.watch(localStorageRepositoryProvider);
+  return localStorageRepository.isMovieFavorite(movieId);
+});
+
+class _CustomSliverAppBar extends ConsumerWidget {
   final Movie movie;
 
   const _CustomSliverAppBar({
@@ -186,15 +192,28 @@ class _CustomSliverAppBar extends StatelessWidget {
   });
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final size = MediaQuery.of(context).size;
+    final isFavoriteFuture = ref.watch(isFavoriteProvider(movie.id));
 
     return SliverAppBar(
       backgroundColor: Colors.black,
       foregroundColor: Colors.white,
       expandedHeight: size.height * 0.7,
       actions: [
-        IconButton(onPressed: () {}, icon: const Icon(Icons.favorite_border))
+        IconButton(
+            icon: isFavoriteFuture.when(
+                data: (isFavorite) => isFavorite
+                    ? const Icon(Icons.favorite, color: Colors.red)
+                    : const Icon(Icons.favorite_border),
+                error: (_, __) => throw UnimplementedError(),
+                loading: () => const CircularProgressIndicator()),
+            onPressed: () async {
+              // ref.read(localStorageRepositoryProvider).toggleFavorite(movie);
+              await ref.read(favoriteMoviesProvider.notifier).toggleFavorite(movie);
+              ref.invalidate(isFavoriteProvider(movie
+                  .id)); // Invalida el estado del provider y lo regresa a su estado original
+            })
       ],
       flexibleSpace: FlexibleSpaceBar(
         // titlePadding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
@@ -214,14 +233,14 @@ class _CustomSliverAppBar extends StatelessWidget {
           ),
 
           // * * Gradient Bottom
-           const _CustomGradient(
+          const _CustomGradient(
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter,
               stops: [0.7, 1.0],
               colors: [Colors.transparent, Colors.black87]),
 
           // * * Gradient Top left
-           const _CustomGradient(
+          const _CustomGradient(
               begin: Alignment.topLeft,
               end: Alignment.centerRight,
               stops: [0.0, 0.3],
@@ -229,10 +248,10 @@ class _CustomSliverAppBar extends StatelessWidget {
 
           // * * Gradient Top right
           const _CustomGradient(
-            begin: Alignment.topRight,
-             end: Alignment.centerLeft, 
-             stops: [0.0, 0.5], 
-             colors: [Colors.black54, Colors.transparent]),
+              begin: Alignment.topRight,
+              end: Alignment.centerLeft,
+              stops: [0.0, 0.5],
+              colors: [Colors.black54, Colors.transparent]),
         ]),
       ),
     );
@@ -246,9 +265,9 @@ class _CustomGradient extends StatelessWidget {
   final List<Color> colors;
 
   const _CustomGradient({
-    required this.begin, 
-    required this.end, 
-    required this.stops, 
+    required this.begin,
+    required this.end,
+    required this.stops,
     required this.colors,
   });
 
@@ -258,12 +277,7 @@ class _CustomGradient extends StatelessWidget {
       child: DecoratedBox(
           decoration: BoxDecoration(
               gradient: LinearGradient(
-                  begin: begin,
-                  end: end,
-                  stops: stops,
-                  colors: colors)
-          )
-      ),
+                  begin: begin, end: end, stops: stops, colors: colors))),
     );
   }
 }
