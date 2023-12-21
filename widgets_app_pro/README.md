@@ -18,7 +18,7 @@ Comprenderemos por qué **Riverpod** es tan popular, por qué es considerado el 
 - Activar o desactivar el **dark mode**
 - Menu Lateral / **Drawer**
 
-# Screenshots 
+# Demos 
 
 | Widget            | Demo                                                              |
 | ----------------- | ------------------------------------------------------------------ |
