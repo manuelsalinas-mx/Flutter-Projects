@@ -63,7 +63,14 @@ flutter pub run build_runner build
 ```
 
 
-## Screenshots
+## Demos
 
-![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
+| Screen            | Demo                                                              |
+| ----------------- | ------------------------------------------------------------------ |
+| **Inicio** | ![Home](https://github.com/manuelsalinas-mx/Flutter-Projects/assets/110424672/03b344f1-ca31-4264-8ec2-bb63d8f0058b) |
+| **Busqueda** | ![search](https://github.com/manuelsalinas-mx/Flutter-Projects/assets/110424672/f4f4c0d2-6f0d-42fd-a842-c2f6d908b19e) |
+| **Detalle Pelicula** | ![Movie Detail](https://github.com/manuelsalinas-mx/Flutter-Projects/assets/110424672/8d457271-849f-455c-8a92-e67bd66550ca) |
+| **Populares** | ![Populares](https://github.com/manuelsalinas-mx/Flutter-Projects/assets/110424672/533dc6e0-8b7c-41da-bb49-b930e4cae35e) |
+| **Favoritos - Agregar** | ![Favoritos-add](https://github.com/manuelsalinas-mx/Flutter-Projects/assets/110424672/e8f2dbd3-8546-4b1f-8ccf-a58109335952) |
+| **Favoritos - Remover** | ![Favoritos-remove](https://github.com/manuelsalinas-mx/Flutter-Projects/assets/110424672/91d6ec46-91e0-4b8b-927b-c28af9a2f135) |
 
