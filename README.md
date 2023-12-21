@@ -10,8 +10,8 @@
 5. [Widgets](https://github.com/manuelsalinas-mx/Flutter-Projects/tree/main/widgets_app)
 6. [Widgets Pro - Menu y Temas](https://github.com/manuelsalinas-mx/Flutter-Projects/tree/main/widgets_app_pro)
 7. [Cinemapedia](https://github.com/manuelsalinas-mx/Flutter-Projects/tree/main/cinemapedia)
+8. [Forms - FlutterBloc y Cubits](https://github.com/manuelsalinas-mx/Flutter-Projects/tree/main/forms_app)
 <!-- 
-8. [Forms App - FlutterBloc y Cubits]()
 9. [Push Y Local Notifications]()
 10. [Riverpod App]()
 -->
