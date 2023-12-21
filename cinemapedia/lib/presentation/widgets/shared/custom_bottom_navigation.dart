@@ -17,10 +17,10 @@ class CustomBottomNavigation extends StatelessWidget {
       elevation: 0,
       onTap: (index) => _onSelectedTab(context, index),
       items: const [
-        BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
+        BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Inicio'),
         BottomNavigationBarItem(
-            icon: Icon(Icons.label_outline), label: 'Categories'),
-        BottomNavigationBarItem(icon: Icon(Icons.favorite), label: 'Favorites'),
+            icon: Icon(Icons.thumbs_up_down), label: 'Populares'),
+        BottomNavigationBarItem(icon: Icon(Icons.favorite), label: 'Favoritas'),
       ],
     );
   }

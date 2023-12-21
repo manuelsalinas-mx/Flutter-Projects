@@ -19,6 +19,7 @@ class MoviePosterLink extends StatelessWidget {
         child: FadeIn(
           child: Image.network(
             movie.posterPath,
+            height: 180,
             fit: BoxFit.cover,
             loadingBuilder: (context, child, loadinPrpgress) {
               if (loadinPrpgress != null) {

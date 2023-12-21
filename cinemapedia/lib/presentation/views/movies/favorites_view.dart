@@ -57,20 +57,23 @@ class _FavoritesEmptyState extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colors = Theme.of(context).colorScheme;
+
     return Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Icon(Icons.favorite_sharp, size: 100, color: Colors.red.shade100),
-          const Text('Wow!', style: TextStyle(fontSize: 30, color: Colors.black45)),
-          const Text('Aun no tienes peliculas favoritas', style: TextStyle(fontSize: 18, color: Colors.black54)),
+          Icon(Icons.favorite_sharp, size: 100, color: Colors.red.shade300),
+          Text('Wow!',
+              style: TextStyle(fontSize: 30, color: colors.primary)),
+          Text('Aun no tienes peliculas favoritas',
+              style: TextStyle(fontSize: 18, color: colors.secondary)),
           const SizedBox(height: 20),
           FilledButton(
-            onPressed: () => context.push('/home/0'), 
-            child: const Text(
-              'Agregar', 
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold))),
+              onPressed: () => context.push('/home/0'),
+              child: const Text('Agregar',
+                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold))),
         ],
       ),
     );
