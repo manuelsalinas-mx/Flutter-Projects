@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:forms_app/config/helpers/email_regexp.dart';
+import 'package:forms_app/presentation/blocs/register_cubit/register_cubit.dart';
 import 'package:forms_app/presentation/widgets/widgets.dart';
 
 class RegisterScreen extends StatelessWidget {
@@ -11,7 +13,10 @@ class RegisterScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Nuevo usuario'),
       ),
-      body: const _RegisterView(),
+      body: BlocProvider(
+        create: (context) => RegisterCubit(),
+        child: const _RegisterView(),
+      ),
     );
   }
 }
@@ -39,64 +44,44 @@ class _RegisterView extends StatelessWidget {
   }
 }
 
-class _RegisterForm extends StatefulWidget {
+class _RegisterForm extends StatelessWidget {
   const _RegisterForm();
 
   @override
-  State<_RegisterForm> createState() => _RegisterFormState();
-}
-
-class _RegisterFormState extends State<_RegisterForm> {
-  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-
-  // form values
-  String username = '';
-  String email = '';
-  String password = '';
-
-  @override
   Widget build(BuildContext context) {
-    return Form(
-        key: _formKey,
-        child: Column(children: [
-          CustomTextFormField(
-              label: 'Username',
-              onChanged: (text) => username = text,
-              validator: (text) {
-                if (text == null || text.trim().isEmpty) return 'Username is required';
-                if (text.length < 6) return 'Username must contain 6 characters at least';
-                return null;
-              }),
-          const SizedBox(height: 10),
-          CustomTextFormField(
-              label: 'Email',
-              onChanged: (text) => email = text,
-              validator: (text) {
-                if (text == null || text.trim().isEmpty) return 'Email is required';
-                if (!emailRegExp.hasMatch(text)) return 'Invalid email format';
-                return null;
-              }),
-          const SizedBox(height: 10),
-          CustomTextFormField(
-              label: 'Password',
-              isObscure: true,
-              onChanged: (text) => password = text,
-              validator: (text) {
-                 if (text == null || text.trim().isEmpty) return 'Password is required';
-                if (text.length < 7) return 'Password must contain 7 characters at least';
-                
-                return null;
-              }),
-          const SizedBox(height: 20),
-          FilledButton.tonalIcon(
-              onPressed: () {
-                final isValid = _formKey.currentState!.validate();
-                if (!isValid) return;
+    // Cubit reference
+    final registerCubit = context.watch<RegisterCubit>();
+    final username = registerCubit.state.username;
+    final email = registerCubit.state.email;
+    final password = registerCubit.state.password;
 
-                print("{$username, $email, $password}");
-              },
-              icon: const Icon(Icons.save),
-              label: const Text('Crear usuario')),
-        ]));
+    return Form(
+        child: Column(children: [
+      CustomTextFormField(
+          label: 'Username',
+          onChanged: registerCubit.usernameChanged,
+          errorMessage: username.errorMessage,
+         ),
+      const SizedBox(height: 10),
+      CustomTextFormField(
+          label: 'Email',
+          onChanged: registerCubit.emailChanged,
+          errorMessage: email.errorMessage
+          ),
+      const SizedBox(height: 10),
+      CustomTextFormField(
+          label: 'Password',
+          isObscure: true,
+          onChanged: registerCubit.passwordChanged,
+          errorMessage: password.errorMessage
+          ),
+      const SizedBox(height: 20),
+      FilledButton.tonalIcon(
+          onPressed: () {
+            registerCubit.onSubmit();
+          },
+          icon: const Icon(Icons.save),
+          label: const Text('Crear usuario')),
+    ]));
   }
 }
