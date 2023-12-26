@@ -29,7 +29,7 @@ class CustomTextFormField extends StatelessWidget {
 
     final border = OutlineInputBorder(
       borderSide: const BorderSide(color: Colors.transparent),
-      borderRadius: BorderRadius.circular(40)
+      // borderRadius: BorderRadius.circular(40)
     );
 
     const borderRadius = Radius.circular(15);
@@ -57,7 +57,7 @@ class CustomTextFormField extends StatelessWidget {
           floatingLabelStyle: const TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 18),
           enabledBorder: border,
           focusedBorder: border,
-          errorBorder: border.copyWith( borderSide: BorderSide( color: Colors.red.shade800 )),
+          errorBorder: border.copyWith( borderSide: BorderSide( color: Colors.transparent )),
           focusedErrorBorder: border.copyWith( borderSide: BorderSide( color: Colors.red.shade800 )),
           isDense: true,
           label: label != null ? Text(label!) : null,
