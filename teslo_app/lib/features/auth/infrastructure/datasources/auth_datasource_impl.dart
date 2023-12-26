@@ -2,7 +2,6 @@ import 'package:dio/dio.dart';
 import 'package:teslo_shop/config/config.dart';
 import 'package:teslo_shop/features/auth/domain/domain.dart';
 import 'package:teslo_shop/features/auth/infrastructure/infrastructure.dart';
-import 'package:teslo_shop/features/auth/infrastructure/mappers/user_mapper.dart';
 
 class AuthDataSourceImpl extends AuthDataSource {
   final dio = Dio(BaseOptions(baseUrl: Environment.apiUrl));
@@ -46,8 +45,19 @@ class AuthDataSourceImpl extends AuthDataSource {
       final response = await dio.post('/auth/register',
           data: {'email': email, 'password': password, 'fullName': fullName});
       return UserMapper.userJsonToEntity(response.data);
+    } on DioError catch (e) {
+      if (e.response?.statusCode == 401) {
+        throw CustomError(
+            e.response?.data['message'] ?? 'Credenciales incorrectas');
+      }
+
+      if (e.type == DioErrorType.connectionTimeout) {
+        throw CustomError(e.response?.data['message'] ?? 'Error de conexion');
+      }
+
+      throw Exception();
     } catch (e) {
-      throw BadCredentials();
+      throw Exception();
     }
   }
 }
