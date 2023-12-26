@@ -32,8 +32,10 @@ docker compose up -d
     http://localhost:3000/api
 
 
-### Referencia 
+### Referencia e Instalaciones recomendadas
 https://github.com/Klerith/flutter-backend-teslo?tab=readme-ov-file
+
+[Docker Desktop](https://www.docker.com/products/docker-desktop/)
 
 
 # Extra
