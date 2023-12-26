@@ -17,10 +17,8 @@ A lo largo del proyecto se trabaja con:
 - **GoRouter**
 
 
-## El backend lo pueden obtener de aquí
+## Backend
 
-[Teslo Backend - Nest RestServer](https://hub.docker.com/repository/docker/klerith/flutter-backend-teslo-shop/general)
+[Teslo Backend - Nest RestServer](https://github.com/manuelsalinas-mx/Flutter-Projects/tree/main/teslo-shop-backend)
 
-# Importante
-Recuerden leer y seguir la guía para montar el backend localmente.
 
