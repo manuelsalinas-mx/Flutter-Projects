@@ -1,12 +1,20 @@
-# Flutter - Authenticated CRUD App - TesloShop
+# Teslo App
+### Flutter - Authenticated CRUD App - TesloShop
 
-Este es un proyecto para trabajar con:
+**Autenticación mediante JWT (Json Web Tokens)**
+- Realizar el **POST** **HTTP**
+- Obtener las **credenciales** del usuario
+- Manejo de **errores** personalizados
+- Manejo del estado del **formulario con Riverpod**
+- Comunicación entre **providers**
 
-* Cámara
-* Tokens de acceso
-* CRUD (Create Read Update Delete) Rest API Endpoints
-* Riverpod
-* GoRouter
+A lo largo del proyecto se trabaja con:
+
+- Cámara
+- Tokens de acceso
+- **CRUD** (Create Read Update Delete) Rest API Endpoints
+- **Riverpod**
+- **GoRouter**
 
 
 ## El backend lo pueden obtener de aquí
