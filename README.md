@@ -13,7 +13,7 @@
 8. [Forms - FlutterBloc y Cubits](https://github.com/manuelsalinas-mx/Flutter-Projects/tree/main/forms_app)
 9. [Push Y Local Notifications]() ***Pendiente**
 10. [Docker Teslo Backend](https://github.com/manuelsalinas-mx/Flutter-Projects/tree/main/teslo-shop-backend)
-11. [Riverpod App](https://github.com/manuelsalinas-mx/Flutter-Projects/tree/main/teslo_app)
+11. [Teslo App](https://github.com/manuelsalinas-mx/Flutter-Projects/tree/main/teslo_app)
 
 
 # Flutter Móvil - Instalaciones recomendadas
