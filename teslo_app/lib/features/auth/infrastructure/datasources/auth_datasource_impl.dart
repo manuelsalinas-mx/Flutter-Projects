@@ -11,8 +11,7 @@ class AuthDataSourceImpl extends AuthDataSource {
   @override
   Future<User> checkAuthStatus(String token) async {
     try {
-      final response = await dio
-          .get('/auth/check-status');
+      final response = await dio.get('/auth/check-status');
       return UserMapper.userJsonToEntity(response.data);
     } catch (e) {
       throw InvalidToken();
@@ -25,16 +24,27 @@ class AuthDataSourceImpl extends AuthDataSource {
       final response = await dio
           .post('/auth/login', data: {'email': email, 'password': password});
       return UserMapper.userJsonToEntity(response.data);
+    } on DioError catch (e) {
+      if (e.response?.statusCode == 401) {
+        throw CustomError(
+            e.response?.data['message'] ?? 'Credenciales incorrectas');
+      }
+
+      if (e.type == DioErrorType.connectionTimeout) {
+        throw CustomError(e.response?.data['message'] ?? 'Error de conexion');
+      }
+
+      throw Exception();
     } catch (e) {
-      throw BadCredentials();
+      throw Exception();
     }
   }
 
   @override
   Future<User> register(String email, String password, String fullName) async {
-      try {
-      final response = await dio
-          .post('/auth/register', data: {'email': email, 'password': password, 'fullName': fullName});
+    try {
+      final response = await dio.post('/auth/register',
+          data: {'email': email, 'password': password, 'fullName': fullName});
       return UserMapper.userJsonToEntity(response.data);
     } catch (e) {
       throw BadCredentials();

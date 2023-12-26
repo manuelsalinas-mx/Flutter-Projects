@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:teslo_shop/features/auth/presentation/providers/login_form_provider.dart';
+import 'package:teslo_shop/features/auth/presentation/providers/providers.dart';
 import 'package:teslo_shop/features/shared/shared.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -50,10 +51,26 @@ class LoginScreen extends StatelessWidget {
 class _LoginForm extends ConsumerWidget {
   const _LoginForm();
 
+  void showSnackbar(BuildContext context, String message) {
+    // Limpiar snackbars anterior
+    ScaffoldMessenger.of(context).clearSnackBars();
+
+    final snackbar = SnackBar(
+      content: Text(message),
+      duration: const Duration(seconds: 2),
+    );
+
+    ScaffoldMessenger.of(context).showSnackBar(snackbar);
+  }
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final textStyles = Theme.of(context).textTheme;
     final loginForm = ref.watch(loginFormProvider);
+    ref.listen(authProvider, (previous, next) {
+      if (next.errorMessage.isEmpty) return;
+      showSnackbar(context, next.errorMessage);
+    });
 
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 50),
@@ -66,9 +83,8 @@ class _LoginForm extends ConsumerWidget {
             label: 'Correo',
             keyboardType: TextInputType.emailAddress,
             onChanged: ref.read(loginFormProvider.notifier).onEmailChange,
-            errorMessage: (loginForm.isFormPosted) 
-            ? loginForm.email.errorMessage
-            : null,
+            errorMessage:
+                (loginForm.isFormPosted) ? loginForm.email.errorMessage : null,
           ),
           const SizedBox(height: 30),
           CustomTextFormField(
@@ -76,8 +92,8 @@ class _LoginForm extends ConsumerWidget {
             obscureText: true,
             onChanged: ref.read(loginFormProvider.notifier).onPasswordChange,
             errorMessage: (loginForm.isFormPosted)
-            ? loginForm.password.errorMessage
-            : null,
+                ? loginForm.password.errorMessage
+                : null,
           ),
           const SizedBox(height: 30),
           SizedBox(
