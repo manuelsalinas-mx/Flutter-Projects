@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class AppTheme {
   ThemeData getTheme() {
-    const seedcolor = Colors.deepPurple;
+    const seedcolor = Colors.indigo;
 
     return ThemeData(
         useMaterial3: true,
