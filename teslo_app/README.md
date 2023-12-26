@@ -16,6 +16,15 @@ A lo largo del proyecto se trabaja con:
 - **Riverpod**
 - **GoRouter**
 
+Protección de rutas utilizando **Go_Router** + **Riverpod**:
+
+- Proteger rutas
+- Redireccionar
+- Actualizar instancia del **GoRouter** cuando hay cambios en el estado
+- Colocar **listeners** de GoRouter
+- Change notifier
+- **Preferencias** de usuario
+- Almacenar **token** de acceso de forma **permanente**
 
 ## Backend
 
