@@ -1,5 +1,21 @@
 # Nest - TesloShop Backend
 
+
+Se tiene por objetivo principal montar un backend real para realizar nuestro trabajo lo más apegado a la realidad.
+
+**Puntualmente veremos:**
+- Docker
+- Docker compose
+- **Imágenes** de docker
+- Conectarse a **postgres** usando **TablePlus**
+- Probar el backend configurado
+- Llenar la **base de datos**
+- Leer la documentación del backend
+- Generar **JWTs** y probarlos
+- Uso de **bearer** **tokens** en los headers de autenticación
+- Trabajar las pruebas con Postman
+
+
 ## Development
 1. Tener corriendo el servicio de Docker (Docker Desktop o Docker Deamon)
 2. Clonar el archivo __.env.template__ y renombrar la copia a __.env__
@@ -16,9 +32,12 @@ docker compose up -d
     http://localhost:3000/api
 
 
+### Referencia 
+https://github.com/Klerith/flutter-backend-teslo?tab=readme-ov-file
+
 
 # Extra
-Si desean saber más sobre docker y cómo se construyó esta imagen, esto es parte de mi curso de Nest y Docker:
+Para saber más sobre docker y cómo se construyó esta imagen, cursos de Nest y Docker:
 
 [Cursos sobre Docker](https://fernando-herrera.com/#/search/docker)
 
