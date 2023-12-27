@@ -26,6 +26,18 @@ Protección de rutas utilizando **Go_Router** + **Riverpod**:
 - **Preferencias** de usuario
 - Almacenar **token** de acceso de forma **permanente**
 
+Pantalla de **Productos** (Home):
+
+- Login con el **boton done** del teclado
+- **Masonry** ListView
+- Productos
+  - **Entidad**
+  - **Datasources**
+  - **Repositorios**
+- Riverpod
+  - **Provider**
+  - **StateNotifierProvider**
+
 ## Backend
 
 [Teslo Backend - Nest RestServer](https://github.com/manuelsalinas-mx/Flutter-Projects/tree/main/teslo-shop-backend)
