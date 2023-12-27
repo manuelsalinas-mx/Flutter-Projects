@@ -91,6 +91,8 @@ class _LoginForm extends ConsumerWidget {
             label: 'Contraseña',
             obscureText: true,
             onChanged: ref.read(loginFormProvider.notifier).onPasswordChange,
+            onFieldSubmitted: (_) =>
+                ref.read(loginFormProvider.notifier).onFormSubmit(),
             errorMessage: (loginForm.isFormPosted)
                 ? loginForm.password.errorMessage
                 : null,
@@ -103,10 +105,11 @@ class _LoginForm extends ConsumerWidget {
                 text: 'Ingresar',
                 buttonColor: Colors.black,
                 onPressed: loginForm.isPosting
-                ? null
-                : () {
-                  ref.read(loginFormProvider.notifier).onFormSubmit();
-                },
+                    ? null
+                    : () {
+                        FocusManager.instance.primaryFocus?.unfocus();
+                        ref.read(loginFormProvider.notifier).onFormSubmit();
+                      },
               )),
           const Spacer(flex: 2),
           Row(
