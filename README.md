@@ -4,16 +4,27 @@
 
 ## Indice de temas: 
 1. [Hello World Dart](https://github.com/manuelsalinas-mx/Flutter-Projects/tree/main/01_dart_intro)
+   - Fundamentos del lenguaje de programación Dart.
 2. [Contador](https://github.com/manuelsalinas-mx/Flutter-Projects/tree/main/hello_world_app)
+   - Manejo de estado basico en Dart y como actualizar el valor en pantalla.
 3. [YesNo Chat](https://github.com/manuelsalinas-mx/Flutter-Projects/tree/main/yes_no_app)
+   - Primer Flutter app simulando una chat con auto respuestas generadas con gifs.
 4. [TikTok](https://github.com/manuelsalinas-mx/Flutter-Projects/tree/main/tik_tok)
+   - Emulando TikTok para mostrar videos a pantalla completa y sobreponiendo widgets.
 5. [Widgets](https://github.com/manuelsalinas-mx/Flutter-Projects/tree/main/widgets_app)
+    - Listado de los Widgets mas comunmente usados en flutter.
 6. [Widgets Pro - Menu y Temas](https://github.com/manuelsalinas-mx/Flutter-Projects/tree/main/widgets_app_pro)
+    - Continuacion del Listado de Widgets con widgets de navegacion mas avanzados.
 7. [Cinemapedia](https://github.com/manuelsalinas-mx/Flutter-Projects/tree/main/cinemapedia)
+    - Primer flutter app robusta para mostrar listados de peliculas y detalles introduciendo los fundamentos basicos de arquitectura Clean y alimentando las vistas a traves de Providers.
 8. [Forms - FlutterBloc y Cubits](https://github.com/manuelsalinas-mx/Flutter-Projects/tree/main/forms_app)
+    - Introducción básica a los gestores de estado Cubit y BloC ademas de ver como manejar campos de formulario de manera tradicional.
 9. [Push Y Local Notifications]() ***Pendiente**
+    - Se monta entorno para enviar y recibir notificaciones push, se exploran las notificaciones locales y como se manejan en base a la informacion extraida de ellas.
 10. [Docker Teslo Backend](https://github.com/manuelsalinas-mx/Flutter-Projects/tree/main/teslo-shop-backend)
+    - Se hace el setup de un backend de productos para la aplicacion final.
 11. [Teslo App](https://github.com/manuelsalinas-mx/Flutter-Projects/tree/main/teslo_app)
+    - Final Flutter app robusta donde se consumen servicios web del backend montado en la seccion anterior para autenticarse, crear, editar y mostrar productos utilizando las bases aprendidas de arquitectura Clean y Providers.
 
 
 # Flutter Móvil - Instalaciones recomendadas
