@@ -30,4 +30,8 @@ Protección de rutas utilizando **Go_Router** + **Riverpod**:
 
 [Teslo Backend - Nest RestServer](https://github.com/manuelsalinas-mx/Flutter-Projects/tree/main/teslo-shop-backend)
 
+# Demo
 
+| Screen            | Demo                                                              |
+| ----------------- | ------------------------------------------------------------------ |
+| **Login Validations** | ![Login error test](https://github.com/manuelsalinas-mx/Flutter-Projects/assets/110424672/b81b984c-5b23-496a-af19-8a6b2a5adef8) |
