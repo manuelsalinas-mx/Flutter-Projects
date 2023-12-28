@@ -43,8 +43,8 @@ Pantalla de **Productos** (Home):
 - Segmentos de botones
 - Selectores
 - Posteos
-- Path
-- Post
+  - Path
+  - Post
 - Retroalimentación de sucesos
 - Manejo de errores
 - Inputs personalizados
