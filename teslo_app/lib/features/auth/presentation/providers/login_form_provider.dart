@@ -76,7 +76,7 @@ class LoginFormNotifier extends StateNotifier<LoginFormState> {
     state = state.copyWith(isPosting: false);
   }
 
-  _validatingAllFields() {
+  void _validatingAllFields() {
     final email = Email.dirty(state.email.value);
     final password = Password.dirty(state.password.value);
 
