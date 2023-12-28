@@ -38,6 +38,17 @@ Pantalla de **Productos** (Home):
   - **Provider**
   - **StateNotifierProvider**
 
+**Creación y mantenimiento** de productos:
+- Formularios
+- Segmentos de botones
+- Selectores
+- Posteos
+- Path
+- Post
+- Retroalimentación de sucesos
+- Manejo de errores
+- Inputs personalizados
+
 ## Backend
 
 [Teslo Backend - Nest RestServer](https://github.com/manuelsalinas-mx/Flutter-Projects/tree/main/teslo-shop-backend)
