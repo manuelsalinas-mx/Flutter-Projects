@@ -41,13 +41,13 @@ Pantalla de **Productos** (Home):
 **Creación y mantenimiento** de productos:
 - Formularios
 - Segmentos de botones
-- Selectores
-- Posteos
+- **Selectores**
+- **Posteos**
   - Path
   - Post
-- Retroalimentación de sucesos
+- Retroalimentación de **sucesos**
 - Manejo de errores
-- Inputs personalizados
+- **Inputs** personalizados
 
 ## Backend
 
