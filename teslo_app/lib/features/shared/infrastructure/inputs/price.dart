@@ -14,14 +14,14 @@ class Price extends FormzInput<double, PriceError> {
   String? get errorMessage {
     if (isValid || isPure) return null;
     if (displayError == PriceError.empty) return 'El campo es requerido';
-    if (displayError == PriceError.negative) return 'El campo no puede ser un valor negativo.';
+    if (displayError == PriceError.negative) return 'El campo debe ser un numero mayor o igual a cero.';
     return null;
   }
 
   // Override validator to handle validating a given input value.
   @override
   PriceError? validator(double value) {
-    if (value.toString().isEmpty || value.toString().isEmpty) return PriceError.empty;
+    if (value.toString().isEmpty || value.toString().trim().isEmpty) return PriceError.empty;
     if (value < 0) return PriceError.negative;
 
     return null;

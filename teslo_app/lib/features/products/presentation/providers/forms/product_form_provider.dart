@@ -162,7 +162,7 @@ class ProductFormNotifier extends StateNotifier<ProductFormState> {
     state = state.copyWith(gender: value);
   }
 
-  void onDescriptionhanged(String value) {
+  void onDescriptionChanged(String value) {
     state = state.copyWith(description: value);
   }
 
