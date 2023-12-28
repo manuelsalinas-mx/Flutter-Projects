@@ -96,7 +96,7 @@ class ProductFormNotifier extends StateNotifier<ProductFormState> {
     };
 
     return true;
-    
+
     //TODO: llamar onsubmit callback
   }
 
@@ -171,5 +171,9 @@ class ProductFormNotifier extends StateNotifier<ProductFormState> {
   }
 }
 
-
-// * #3 Creando el Provider
+// * #3 Creando el Provider (StateNotifierProvider)
+final productFormProvider =
+    StateNotifierProvider.autoDispose.family<ProductFormNotifier, ProductFormState, Product>((ref, product) {
+//TODO: Create update callback
+  return ProductFormNotifier(product: product);
+});
