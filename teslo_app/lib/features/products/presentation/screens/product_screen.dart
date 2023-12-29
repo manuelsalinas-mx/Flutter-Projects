@@ -14,26 +14,52 @@ class ProductScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final productstate = ref.watch(productProvider(productId));
 
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Product'),
-        actions: [
-          IconButton(
-              onPressed: () {}, icon: const Icon(Icons.camera_alt_outlined))
-        ],
+    void showSuccessSnackbar(BuildContext context, String productId) {
+      // Limpiar snackbasr anterior
+      ScaffoldMessenger.of(context).clearSnackBars();
+
+      final snackbar = SnackBar(
+          backgroundColor: Colors.green,
+          content: Text(
+              'Producto ${(productId == 'new') ? 'Creado!' : 'Actualizado!'}',
+              style:
+                  const TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+          duration: const Duration(seconds: 2));
+
+      ScaffoldMessenger.of(context).showSnackBar(snackbar);
+    }
+
+    return GestureDetector(
+      onTap: () => FocusScope.of(context).unfocus(),
+      child: Scaffold(
+        appBar: AppBar(
+          title: const Text('Product'),
+          actions: [
+            IconButton(
+                icon: const Icon(Icons.camera_alt_outlined),
+                onPressed: () {
+                  FocusScope.of(context).unfocus();
+                })
+          ],
+        ),
+        body: productstate.isLoading
+            ? const FullscreenLoader()
+            : _ProductView(product: productstate.product!),
+        floatingActionButton: productstate.product == null
+            ? null
+            : FloatingActionButton(
+                child: const Icon(Icons.save),
+                onPressed: () {
+                  FocusScope.of(context).unfocus();
+                  ref
+                      .read(productFormProvider(productstate.product!).notifier)
+                      .onFormSubmit()
+                      .then((success) {
+                    if (!success) return null;
+                    showSuccessSnackbar(context, productstate.product!.id);
+                  });
+                }),
       ),
-      body: productstate.isLoading
-          ? const FullscreenLoader()
-          : _ProductView(product: productstate.product!),
-      floatingActionButton: productstate.product == null
-      ? null
-      : FloatingActionButton(
-          child: const Icon(Icons.save),
-          onPressed: () {
-            ref
-                .read(productFormProvider(productstate.product!).notifier)
-                .onFormSubmit();
-          }),
     );
   }
 }
@@ -176,6 +202,7 @@ class _SizeSelector extends StatelessWidget {
       selected: Set.from(selectedSizes),
       onSelectionChanged: (newSelection) {
         // print(newSelection);
+        FocusScope.of(context).unfocus();
         onSizesChanged(List.from(newSelection));
       },
       multiSelectionEnabled: true,
@@ -213,6 +240,7 @@ class _GenderSelector extends StatelessWidget {
         selected: {selectedGender},
         onSelectionChanged: (newSelection) {
           // print(newSelection);
+          FocusScope.of(context).unfocus();
           onGenderChanged(newSelection.first);
         },
       ),

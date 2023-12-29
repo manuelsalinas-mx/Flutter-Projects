@@ -18,7 +18,7 @@ class ProductsDatasourceImpl extends ProductsDatasource {
       // Si viene 'id' es update, sino viene es creacion
       final String? producId = productLike['id'];
       final String method = (producId == null) ? 'POST' : 'PATCH';
-      final String url = (producId == null) ? '/post' : '/products/$producId';
+      final String url = (producId == null) ? '/products' : '/products/$producId';
       productLike.remove('id');
 
       final response =

@@ -40,11 +40,31 @@ class ProductNotifier extends StateNotifier<ProductState> {
     loadProduct();
   }
 
-  Future<void> loadProduct() async {
-    // retraso intencional para mostrar un loading 
-    await Future.delayed(const Duration(seconds: 1));
+  Product _newEmptyProduct() {
+    return Product(
+      id: 'new',
+      title: 'new product',
+      price: 0,
+      description: 'new description',
+      slug: 'new_slug',
+      stock: 0,
+      sizes: ['S', 'M', 'L'],
+      gender: 'men',
+      tags: ['new tag'],
+      images: [],
+    );
+  }
 
+  Future<void> loadProduct() async {
     try {
+      if (state.id == 'new') {
+        state = state.copyWith(isLoading: false, product: _newEmptyProduct());
+        return;
+      }
+
+      // retraso intencional para mostrar un loading
+      await Future.delayed(const Duration(seconds: 1));
+
       final product = await productsRepository.getProductById(state.id);
       state = state.copyWith(isLoading: false, product: product);
     } catch (e) {
