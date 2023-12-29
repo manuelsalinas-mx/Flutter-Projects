@@ -59,8 +59,8 @@ Pantalla de **Productos** (Home):
   
 
 ## Backend
-
-[Teslo Backend - Nest RestServer](https://github.com/manuelsalinas-mx/Flutter-Projects/tree/main/teslo-shop-backend)
+- [Documentación de los endpoints disponibles](http://localhost:3000/api)
+- [Teslo Backend - Nest RestServer](https://github.com/manuelsalinas-mx/Flutter-Projects/tree/main/teslo-shop-backend)
 
 # Demo
 
