@@ -47,5 +47,11 @@
 	<true/>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Para poder subir imagen del producto</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Para poder subir imagen del producto</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>Para poder subir imagen del producto</string>
 </dict>
 </plist>

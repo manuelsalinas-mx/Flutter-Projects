@@ -101,8 +101,8 @@ class ProductFormNotifier extends StateNotifier<ProductFormState> {
     try {
       return await onSubmitCallback!(productLike);
     } catch (e) {
-       return false;
-    }  
+      return false;
+    }
   }
 
   void _validatingAllFields() {
@@ -113,6 +113,12 @@ class ProductFormNotifier extends StateNotifier<ProductFormState> {
       Price.dirty(state.price.value),
       Stock.dirty(state.inStock.value),
     ]));
+  }
+
+  void updateProductImages(String path) {
+    state = state.copyWith(
+      images: [...state.images, path]
+    );
   }
 
   void onTitleChanged(String value) {

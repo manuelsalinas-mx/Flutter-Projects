@@ -12,23 +12,57 @@ class ProductsDatasourceImpl extends ProductsDatasource {
             baseUrl: Environment.apiUrl,
             headers: {'Authorization': 'Bearer $accessToken'}));
 
+  Future<String> _uploadFile(String filePath) async {
+    try {
+      final fileName = filePath.split('/').last;
+      final FormData data = FormData.fromMap(
+          {'file': MultipartFile.fromFileSync(filePath, filename: fileName)});
+
+      final response = await dio.post('/files/product', data: data);
+      return response.data['image'];
+    } catch (e) {
+      throw Exception();
+    }
+  }
+
+  Future<List<String>> _uploadPhotos(List<String> photos) async {
+    // Solo las imagenes de file system contienen el '/' y son las que se deberian subir
+    final photosToUpload =
+        photos.where((element) => element.contains('/')).toList();
+    final photosToIgnore =
+        photos.where((element) => !element.contains('/')).toList();
+
+    final List<Future<String>> uploadTask =
+        //photosToUpload.map((e) => _uploadFile(e)).toList();
+         photosToUpload.map(_uploadFile).toList();
+        
+    final uploadedPhotos = await Future.wait(uploadTask);
+
+    return [...photosToIgnore, ...uploadedPhotos];
+  }
+
+// * * * * * * * * * * * * * * * * * * * * *
   @override
   Future<Product> createUpdateProduct(Map<String, dynamic> productLike) async {
     try {
       // Si viene 'id' es update, sino viene es creacion
       final String? producId = productLike['id'];
       final String method = (producId == null) ? 'POST' : 'PATCH';
-      final String url = (producId == null) ? '/products' : '/products/$producId';
+      final String url =
+          (producId == null) ? '/products' : '/products/$producId';
+
+      // Remover 'id' del body
       productLike.remove('id');
 
-      final response =
-          await dio.request(url, data: productLike, options: Options(method: method));
-      return ProductMapper.jsonToEntity(response.data);
+      // Subir las fotos nuevas
+      productLike['images'] = await _uploadPhotos(productLike['images']);
 
+      final response = await dio.request(url,
+          data: productLike, options: Options(method: method));
+      return ProductMapper.jsonToEntity(response.data);
     } on DioError catch (e) {
       if (e.response?.statusCode == 404) throw ProductNotFound();
       throw Exception();
-      
     } catch (e) {
       throw Exception();
     }
