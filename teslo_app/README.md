@@ -64,6 +64,13 @@ Pantalla de **Productos** (Home):
 
 # Demo
 
+**Nota:**
+Antes de correr la apliacion debes montar y correr las imagenes del backend en [**Docker**](https://www.docker.com/products/docker-desktop/) y debe lucir de esta manera.
+
+<img width="1624" alt="Docker" src="https://github.com/manuelsalinas-mx/Flutter-Projects/assets/110424672/0b0381ba-14c9-4722-84a1-7e8fbbf7fbc4">
+
+--- 
+
 | Screen            | Demo                                                              |
 | ----------------- | ------------------------------------------------------------------ |
 | **Login Validations** | ![Login error test](https://github.com/manuelsalinas-mx/Flutter-Projects/assets/110424672/b81b984c-5b23-496a-af19-8a6b2a5adef8) |
