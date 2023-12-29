@@ -49,6 +49,15 @@ Pantalla de **Productos** (Home):
 - Manejo de errores
 - **Inputs** personalizados
 
+**Cámara, Galeria y Carga de Archivos**
+- **Patrón adaptador** sobre el paquete de cámara
+- POST Form **Multipart**
+- Mostrar imágenes como **archivos**
+- Multiples cargas **simultáneas**
+- Postman - Pruebas de API
+- **Actualizar** **estado** del formulario
+  
+
 ## Backend
 
 [Teslo Backend - Nest RestServer](https://github.com/manuelsalinas-mx/Flutter-Projects/tree/main/teslo-shop-backend)
