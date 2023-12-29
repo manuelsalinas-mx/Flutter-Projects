@@ -1,6 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:formz/formz.dart';
 import 'package:teslo_shop/config/constants/environment.dart';
+import 'package:teslo_shop/features/products/presentation/providers/providers.dart';
 import '../../../../shared/shared.dart';
 import '../../../domain/domain.dart';
 
@@ -60,7 +61,8 @@ class ProductFormState {
 
 // * #2 Creando el Notifier
 class ProductFormNotifier extends StateNotifier<ProductFormState> {
-  final void Function(Map<String, dynamic> productLike)? onSubmitCallback;
+  final Future<bool> Function(Map<String, dynamic> productLike)?
+      onSubmitCallback;
 
   ProductFormNotifier({this.onSubmitCallback, required Product product})
       : super(ProductFormState(
@@ -80,7 +82,8 @@ class ProductFormNotifier extends StateNotifier<ProductFormState> {
     if (!state.isFormValid) return false;
     if (onSubmitCallback == null) return false;
 
-    final productLike = {
+    final Map<String, dynamic> productLike = {
+      'id': state.id,
       'title': state.title.value,
       'price': state.price.value,
       'description': state.description,
@@ -88,16 +91,18 @@ class ProductFormNotifier extends StateNotifier<ProductFormState> {
       'stock': state.inStock.value,
       'sizes': state.sizes,
       'gender': state.gender,
-      'tags': state.tags.split(','),
+      'tags': state.tags.split(',').map((e) => e.trim()).toList(),
       'images': state.images
           .map((img) =>
               img.replaceAll('${Environment.apiUrl}/files/product/', ''))
           .toList()
     };
 
-    return true;
-
-    //TODO: llamar onsubmit callback
+    try {
+      return await onSubmitCallback!(productLike);
+    } catch (e) {
+       return false;
+    }  
   }
 
   void _validatingAllFields() {
@@ -172,8 +177,11 @@ class ProductFormNotifier extends StateNotifier<ProductFormState> {
 }
 
 // * #3 Creando el Provider (StateNotifierProvider)
-final productFormProvider =
-    StateNotifierProvider.autoDispose.family<ProductFormNotifier, ProductFormState, Product>((ref, product) {
-//TODO: Create update callback
-  return ProductFormNotifier(product: product);
+final productFormProvider = StateNotifierProvider.autoDispose
+    .family<ProductFormNotifier, ProductFormState, Product>((ref, product) {
+  final createUpdateCallback =
+      ref.watch(productsProvider.notifier).createOrUpdateProduct;
+
+  return ProductFormNotifier(
+      product: product, onSubmitCallback: createUpdateCallback);
 });

@@ -13,8 +13,25 @@ class ProductsDatasourceImpl extends ProductsDatasource {
             headers: {'Authorization': 'Bearer $accessToken'}));
 
   @override
-  Future<Product> createUpdateProduct(Map<String, dynamic> productLike) {
-    throw UnimplementedError();
+  Future<Product> createUpdateProduct(Map<String, dynamic> productLike) async {
+    try {
+      // Si viene 'id' es update, sino viene es creacion
+      final String? producId = productLike['id'];
+      final String method = (producId == null) ? 'POST' : 'PATCH';
+      final String url = (producId == null) ? '/post' : '/products/$producId';
+      productLike.remove('id');
+
+      final response =
+          await dio.request(url, data: productLike, options: Options(method: method));
+      return ProductMapper.jsonToEntity(response.data);
+
+    } on DioError catch (e) {
+      if (e.response?.statusCode == 404) throw ProductNotFound();
+      throw Exception();
+      
+    } catch (e) {
+      throw Exception();
+    }
   }
 
   @override

@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:teslo_shop/features/products/presentation/providers/forms/product_form_provider.dart';
@@ -27,8 +25,15 @@ class ProductScreen extends ConsumerWidget {
       body: productstate.isLoading
           ? const FullscreenLoader()
           : _ProductView(product: productstate.product!),
-      floatingActionButton:
-          FloatingActionButton(child: const Icon(Icons.save), onPressed: () {}),
+      floatingActionButton: productstate.product == null
+      ? null
+      : FloatingActionButton(
+          child: const Icon(Icons.save),
+          onPressed: () {
+            ref
+                .read(productFormProvider(productstate.product!).notifier)
+                .onFormSubmit();
+          }),
     );
   }
 }
@@ -112,8 +117,9 @@ class _ProductInformation extends ConsumerWidget {
           const SizedBox(height: 5),
           _GenderSelector(
             selectedGender: productForm.gender,
-            onGenderChanged: ref.read(productFormProvider(product).notifier).onGenderChanged,
-            ),
+            onGenderChanged:
+                ref.read(productFormProvider(product).notifier).onGenderChanged,
+          ),
           const SizedBox(height: 15),
           CustomProductField(
             isTopField: true,
