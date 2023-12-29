@@ -74,3 +74,12 @@ Antes de correr la apliacion debes montar y correr las imagenes del backend en [
 | Screen            | Demo                                                              |
 | ----------------- | ------------------------------------------------------------------ |
 | **Login Validations** | ![Login error test](https://github.com/manuelsalinas-mx/Flutter-Projects/assets/110424672/b81b984c-5b23-496a-af19-8a6b2a5adef8) |
+| **algo** | |
+| **algo** | |
+| **algo** | |
+| **algo** | |
+| **algo** | |
+| **algo** | |
+| **algo** | |
+| **algo** | |
+| **algo** | |
