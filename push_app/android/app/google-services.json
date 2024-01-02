@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1008392687534",
+    "project_id": "flutter-projects-28146",
+    "storage_bucket": "flutter-projects-28146.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1008392687534:android:dadbe3485bd2aa0a9f423f",
+        "android_client_info": {
+          "package_name": "com.manusalinas.push_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyARw2Zvz5afjgm_AI42_6B2GP_19HZsuNI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
