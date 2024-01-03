@@ -22,7 +22,9 @@ class NotificationsBloc extends Bloc<NotificationsEvent, NotificationsState> {
   FirebaseMessaging messaging = FirebaseMessaging.instance;
 
   NotificationsBloc() : super(const NotificationsState()) {
+    // Listeners
     on<NotificationStatusChanged>(_notificationStatusChanged);
+    on<NotificationReceived>(_onPushMessageReceived);
 
     // Verificar permisos para recibir notificaciones
     _initialStatusCheck();
@@ -69,11 +71,12 @@ class NotificationsBloc extends Bloc<NotificationsEvent, NotificationsState> {
       sound: true,
     );
 
+    // emitir
     add(NotificationStatusChanged(settings.authorizationStatus));
   }
 
   // * * * * * * * * *  Handle Remote Messages
-  void _handleRemoteMessage(RemoteMessage message) {
+  void handleRemoteMessage(RemoteMessage message) {
     if (message.notification == null) return;
 
     final notification = PushMessage(
@@ -87,10 +90,25 @@ class NotificationsBloc extends Bloc<NotificationsEvent, NotificationsState> {
             ? message.notification!.android?.imageUrl
             : message.notification!.apple?.imageUrl);
 
-    print(notification);
+    // emitir
+    add(NotificationReceived(notification));
   }
 
   void _onForegroundMessage() {
-    FirebaseMessaging.onMessage.listen(_handleRemoteMessage);
+    FirebaseMessaging.onMessage.listen(handleRemoteMessage);
+  }
+
+  void _onPushMessageReceived(
+      NotificationReceived event, Emitter<NotificationsState> emit) {
+    emit(
+        state.copyWith(notifications: [event.message, ...state.notifications]));
+  }
+
+  // * * * * * * * * *  Helpers
+  PushMessage? getMessageById(String id) {
+    final exist = state.notifications.any((element) => element.messageId == id);
+    if (!exist) return null;
+    
+    return state.notifications.firstWhere((element) => element.messageId == id);
   }
 }
