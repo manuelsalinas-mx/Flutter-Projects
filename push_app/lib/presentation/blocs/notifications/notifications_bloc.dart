@@ -20,8 +20,18 @@ Future<void> firebaseMessagingBackgroundHandler(RemoteMessage message) async {
 
 class NotificationsBloc extends Bloc<NotificationsEvent, NotificationsState> {
   FirebaseMessaging messaging = FirebaseMessaging.instance;
+   int pushNumberId = 0;
 
-  NotificationsBloc() : super(const NotificationsState()) {
+  final Future<void> Function()? requestLocalNotificationPermission;
+  final void Function(
+      {required int id,
+      String? title,
+      String? body,
+      String? data})? showLocalNotification;
+
+  NotificationsBloc(
+      {this.requestLocalNotificationPermission, this.showLocalNotification})
+      : super(const NotificationsState()) {
     // Listeners
     on<NotificationStatusChanged>(_notificationStatusChanged);
     on<NotificationReceived>(_onPushMessageReceived);
@@ -71,6 +81,11 @@ class NotificationsBloc extends Bloc<NotificationsEvent, NotificationsState> {
       sound: true,
     );
 
+    // Local notifications
+    if (requestLocalNotificationPermission != null) {
+      await requestLocalNotificationPermission!();
+    }
+
     // emitir
     add(NotificationStatusChanged(settings.authorizationStatus));
   }
@@ -90,6 +105,15 @@ class NotificationsBloc extends Bloc<NotificationsEvent, NotificationsState> {
             ? message.notification!.android?.imageUrl
             : message.notification!.apple?.imageUrl);
 
+    // Mostrar local notification
+    if (showLocalNotification != null) {
+      showLocalNotification!(
+          id: ++pushNumberId, 
+          title: notification.title,
+          body: notification.body,
+          data: notification.data.toString());
+    }
+
     // emitir
     add(NotificationReceived(notification));
   }
@@ -108,7 +132,7 @@ class NotificationsBloc extends Bloc<NotificationsEvent, NotificationsState> {
   PushMessage? getMessageById(String id) {
     final exist = state.notifications.any((element) => element.messageId == id);
     if (!exist) return null;
-    
+
     return state.notifications.firstWhere((element) => element.messageId == id);
   }
 }
