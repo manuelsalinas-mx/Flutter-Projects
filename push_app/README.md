@@ -3,6 +3,7 @@
 
 Manejo de Notificaciones Push en Android / iOS.
 
+**Push Notifications:**
 - **Tipos** de estado de notificaciones
 - **Métodos** para su manejo
 - **Entidades**
@@ -13,6 +14,12 @@ Manejo de Notificaciones Push en Android / iOS.
 - **Firebase**
 - Configuraciones de **FCM**
 - Configuración de proyecto de **Firebase**
+
+**Local Notifications:**
+- Mezclar **Push** **+** **Local** Notifications
+- **Reaccionar** cuando se tocan las local notifications
+- Sonidos e iconos personalizados
+- Aprender a **evitar** las dependencias ocultas
 
 ## Screenshots
 
