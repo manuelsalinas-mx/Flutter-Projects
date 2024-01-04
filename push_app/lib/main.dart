@@ -7,6 +7,7 @@ import 'package:push_app/config/theme/app_theme.dart';
 import 'package:push_app/presentation/blocs/notifications/notifications_bloc.dart';
 
 // Reference: https://firebase.flutter.dev/docs/messaging/overview/
+// https://github.com/Klerith/flutter-push-local-notifications/tree/fin-seccion-24
 // * * * * * * * * * * * * * * * Main
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
