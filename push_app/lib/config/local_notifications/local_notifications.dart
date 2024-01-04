@@ -1,5 +1,7 @@
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 
+import '../router/app_router.dart';
+
 /// Entendamos por "Local Notification" hacer que la notificacion se pueda mostrar como un globo encima de todo
 class LocalNotifications {
   static Future<void> requestPermissionLocalNotifications() async {
@@ -22,7 +24,8 @@ class LocalNotifications {
       // iOS:
     );
 
-    await flutterLocalNotificationsPlugin.initialize(initializationSettings);
+    await flutterLocalNotificationsPlugin.initialize(initializationSettings,
+        onDidReceiveNotificationResponse: onDidReceiveNotificationResponse);
   }
 
   static void showLocalNotification({
@@ -33,9 +36,7 @@ class LocalNotifications {
   }) {
     const androidDetails = AndroidNotificationDetails(
         'channelId', 'channelName',
-        playSound: true,
-        importance: Importance.max,
-        priority: Priority.high);
+        playSound: true, importance: Importance.max, priority: Priority.high);
 
     const notificationDetails = NotificationDetails(
       android: androidDetails,
@@ -43,6 +44,12 @@ class LocalNotifications {
     );
 
     final flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
-    flutterLocalNotificationsPlugin.show(id, title, body, notificationDetails, payload: data);
+    flutterLocalNotificationsPlugin.show(id, title, body, notificationDetails,
+        payload: data);
+  }
+
+  static void onDidReceiveNotificationResponse(NotificationResponse response) {
+    final messageId = response.payload;
+    appRouter.push('/notification/$messageId');
   }
 }
